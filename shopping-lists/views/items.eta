@@ -1,0 +1,46 @@
+<% layout("./layouts/layout.eta") %>
+
+<!-- Main title with modified font and font size -->
+<h1 style="font-family: Arial, sans-serif; font-size: 36px;">Shared shopping lists</h1>
+
+<!-- Navigation link to view shopping lists with modified color -->
+<a href="/lists" style="color: #007bff;">Shopping lists</a>
+
+<!-- Subtitle for adding an item with modified font and font size -->
+<h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 24px;">Add an item</h2>
+
+<!-- Item addition form within a container -->
+<div class="container">
+  <form method="POST" action="<%= it.postPath %>">
+    <!-- Input field for item name -->
+    Item name: <input type="text" name="name" />
+    
+    <!-- Submit button to add the item -->
+    <input type="submit" value="Submit!" />
+  </form>
+</div>
+
+<!-- Subtitle for displaying the shopping list name with modified font and font size -->
+<h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 24px;"><%= it.list.name %></h2>
+
+<!-- List of items within an unordered list -->
+<ul>
+  <% it.items.forEach((item) => { %>
+    <li>
+      <p>
+        <!-- Form to mark an item as collected or not -->
+        <form method="POST" action="<%= it.postPath %>/<%= item.id %>/collect">
+          <!-- Check if the item is collected -->
+          <% if (item.collected) { %>
+            <!-- Display the item name with a strikethrough if collected -->
+            <del><%= item.name %></del>
+          <% } else { %>
+            <!-- Display the item name and provide a button to mark it as collected -->
+            <%= item.name %>
+            <input type="submit" value="Mark collected!" />
+          <% } %>
+        </form>
+      </p>
+    </li>
+  <% }); %>
+</ul>

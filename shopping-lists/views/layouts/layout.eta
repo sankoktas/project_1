@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Lists</title>
+    
+    <!-- Link to external stylesheet for styling -->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <!-- Header section -->
+    <header>
+      <!-- Main title -->
+      <h1>Shopping Lists</h1>
+    </header>
+    
+    <!-- Main content section -->
+    <main>
+      <!-- Content container -->
+      <div class="container">
+        <!-- Include the body content provided by the Eta template -->
+        <%~ it.body %>
+      </div>
+    </main>
+    
+    <!-- Footer section -->
+    <footer>
+      <!-- Copyright notice with the current year and author's name -->
+      <p>&copy; 2023 Fikri San Koktas</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<% layout("../views/layouts/layout.eta") %>
+<div class="page-content">
+  <!-- Main title with modified font and font size -->
+  <h1 style="font-family: Arial, sans-serif; font-size: 36px;">Shared shopping lists</h1>
+  
+  <!-- Navigation link with modified color -->
+  <nav>
+    <a href="/lists" style="color: #007bff;">View Shopping Lists</a>
+  </nav>
+
+  <!-- Statistics section -->
+  <section class="statistics">
+    <!-- Subtitle with modified font and font size -->
+    <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 24px;">Statistics</h2>
+
+    <!-- Check if there are shopping lists available -->
+    <% if (it.stats.lists > 0) { %>
+      <!-- Display statistics if there are shopping lists -->
+      <ul>
+        <li>Shopping lists: <%= it.stats.lists %></li>
+        <li>Shopping list items: <%= it.stats.items %></li>
+      </ul>
+    <% } else { %>
+      <!-- Display a message if there are no shopping lists -->
+      <p>No shopping lists yet.</p>
+    <% } %>
+  </section>
+</div>

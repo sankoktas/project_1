@@ -1,0 +1,43 @@
+<% layout("./layouts/layout.eta") %>
+
+<!-- Main title with modified font and font size -->
+<h1 style="font-family: Arial, sans-serif; font-size: 36px;">Shared Shopping Lists</h1>
+
+<!-- Navigation link to the main page with modified color -->
+<a href="/" style="color: #007bff;">Main page</a>
+
+<!-- Subtitle for creating a new shopping list with modified font and font size -->
+<h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 24px;">New Shopping List</h2>
+
+<!-- Shopping list creation form within a container -->
+<div class="container">
+  <form method="POST" action="/lists">
+    <!-- Input field for the shopping list name -->
+    Name: <input type="text" name="name" />
+
+    <!-- Submit button to create the new shopping list -->
+    <input type="submit" value="Submit!" />
+  </form>
+</div>
+
+<!-- Subtitle for displaying current shopping lists with modified font and font size -->
+<h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 24px;">Current Shopping Lists</h2>
+
+<!-- List of shopping lists within an unordered list -->
+<ul>
+  <% it.lists.forEach((list) => { %>
+    <li>
+      <p>
+        <!-- Form to deactivate a shopping list -->
+        <form method="POST" action="/lists/<%= list.id %>/deactivate">
+          <!-- Check if the shopping list is active -->
+          <% if (list.active) { %>
+            <!-- Display a link to the shopping list and provide a button to deactivate it -->
+            <a href="/lists/<%= list.id %>"><%= list.name %></a>
+            <input type="submit" value="Deactivate list!" />
+          <% } %>
+        </form>
+      </p>
+    </li>
+  <% }); %>
+</ul>
